@@ -3,7 +3,7 @@ Teste pratico de uma api para criar, editar, consultar,listar pessoas, e atribui
 Implementar cruds de listar e criar um endereço.
 
 Em qual etapa da implementação você considera a qualidade de software?
-nas etapas de service e controller onde sao feitas as regras do sistema.
+Nas etapas de service e controller onde sao feitas as regras do sistema.
 
 Java 11,
 SpringBoot,
