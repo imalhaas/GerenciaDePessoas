@@ -27,10 +27,6 @@ public class Endereco {
     private Long pessoaId;
 
 
-   // @Enumerated(EnumType.STRING) @NotNull
-    //private TipoEndereco tipo;
-
-
     public Boolean getPrincipal() {
         return principal;
     }
