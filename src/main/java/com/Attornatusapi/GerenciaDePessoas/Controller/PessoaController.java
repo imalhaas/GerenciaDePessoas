@@ -2,6 +2,7 @@ package com.Attornatusapi.GerenciaDePessoas.Controller;
 
 import com.Attornatusapi.GerenciaDePessoas.Model.Pessoa;
 import com.Attornatusapi.GerenciaDePessoas.Repository.PessoaRepository;
+import com.Attornatusapi.GerenciaDePessoas.Service.PessoaService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
@@ -18,33 +19,35 @@ import java.util.List;
 public class PessoaController {
 
     @Autowired
-    private PessoaRepository pessoaRepository;
+    private PessoaService pessoaService;
 
     @GetMapping
     public List<Pessoa> listar(){
-        return pessoaRepository.findAll();
+        return pessoaService.listar();
     }
 
     @GetMapping("/{codigo}")
     public ResponseEntity<Pessoa> consultarPessoaPeloCodigo(@PathVariable Long codigo){
-        Pessoa pessoa = pessoaRepository.findById(codigo).orElse(null);
+        Pessoa pessoa = pessoaService.consultarPessoaPeloCodigo(codigo);
         return pessoa != null ? ResponseEntity.ok(pessoa) : ResponseEntity.notFound().build();
     }
 
     @PostMapping
     public ResponseEntity<Pessoa> criar(@Valid @RequestBody Pessoa pessoa, HttpServletResponse response){
-        Pessoa pessoaSalva = pessoaRepository.save(pessoa);
+        Pessoa pessoaSalva = pessoaService.salvar(pessoa);
 
         return ResponseEntity.status(HttpStatus.CREATED).body(pessoaSalva);
     }
 
     @PutMapping("/{codigo}")
     public Pessoa editarPessoa(@PathVariable Long codigo,  @RequestBody Pessoa pessoa ){
-          Pessoa pessoaSalva = pessoaRepository.findById(codigo).
-                  orElseThrow(() -> new EmptyResultDataAccessException(1));
+          return pessoaService.atualizar(codigo, pessoa);
+    }
 
-        BeanUtils.copyProperties(pessoa, pessoaSalva, "codigo");
-        return this.pessoaRepository.save(pessoaSalva);
+    @DeleteMapping("/{codigo}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void remover(@PathVariable Pessoa codigo){
+        pessoaService.Remover(codigo);
     }
 
 }

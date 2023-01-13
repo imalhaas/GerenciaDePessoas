@@ -20,13 +20,32 @@ public class Endereco {
 
     private String cidade;
 
+    @NotNull
+    private Boolean principal;
 
-    @Enumerated(EnumType.STRING) @NotNull
-    private TipoEndereco tipo;
+    @Column(name = "pessoa_codigo")
+    private Long pessoaId;
 
-    @ManyToOne
-    @JoinColumn(name = "pessoa_endereco")
-    private Pessoa pessoa;
+
+   // @Enumerated(EnumType.STRING) @NotNull
+    //private TipoEndereco tipo;
+
+
+    public Boolean getPrincipal() {
+        return principal;
+    }
+
+    public void setPrincipal(Boolean principal) {
+        this.principal = principal;
+    }
+
+    public Long getPessoaId() {
+        return pessoaId;
+    }
+
+    public void setPessoaId(Long pessoaId) {
+        this.pessoaId = pessoaId;
+    }
 
     public Long getCodigo() {
         return codigo;
@@ -68,21 +87,7 @@ public class Endereco {
         this.cidade = cidade;
     }
 
-    public TipoEndereco getTipo() {
-        return tipo;
-    }
 
-    public void setTipo(TipoEndereco tipo) {
-        this.tipo = tipo;
-    }
-
-    public Pessoa getPessoa() {
-        return pessoa;
-    }
-
-    public void setPessoa(Pessoa pessoa) {
-        this.pessoa = pessoa;
-    }
 
     @Override
     public boolean equals(Object o) {

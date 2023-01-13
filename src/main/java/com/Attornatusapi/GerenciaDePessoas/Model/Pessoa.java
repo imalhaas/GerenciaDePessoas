@@ -1,7 +1,6 @@
 package com.Attornatusapi.GerenciaDePessoas.Model;
-
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -18,6 +17,8 @@ public class Pessoa {
 
     @Column(name = "data_nascimento")
     private String dataDeNascimento;
+
+
 
     public Long getCodigo() {
         return codigo;
