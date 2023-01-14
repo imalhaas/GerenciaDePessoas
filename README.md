@@ -7,5 +7,6 @@ Nas etapas de service e controller onde sao feitas as regras do sistema.
 
 Java 11,
 SpringBoot,
-banco H2
+banco H2,
+Postman para testes
 
