@@ -1,5 +1,7 @@
 package com.Attornatusapi.GerenciaDePessoas.Model;
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.List;
 import java.util.Objects;
 
@@ -12,6 +14,7 @@ public class Pessoa {
     private Long codigo;
 
     @Column(name = "nome")
+    @NotNull
     private String nome;
 
 
