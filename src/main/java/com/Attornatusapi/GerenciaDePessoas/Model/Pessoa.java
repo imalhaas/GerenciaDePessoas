@@ -14,6 +14,7 @@ public class Pessoa {
     private Long codigo;
 
     @Column(name = "nome")
+    @Size(min = 3, max = 30)
     @NotNull
     private String nome;
 
